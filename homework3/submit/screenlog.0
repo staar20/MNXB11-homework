@@ -1,0 +1,965 @@
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ cat ./run_in_container_calculatePI.sh
+[?2004l#!/bin/sh
+# This script runs the calculatePI.sh script using the container `mnxb11_al9.latest.sif` with minimum required parameters
+# -B mounts the project directory inside the container so that is visible also inside the container
+apptainer run -B /projects:/projects /projects/hep/fs11/share/mnxb11/containers/mnxb11_al9.latest.sif ./calculatePI_setup.sh
+
+
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ cat calculatepi.sbatch-yourname.sh
+[?2004lcat: calculatepi.sbatch-yourname.sh: No such file or directory
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ cat calculatepi.sbatch-yourname.sh[K[K[K[K[K[K[K[K[K[K[Kestre[K[1Pi.sbatch-estr[1Pi.sbatch-estrei.sbatch-estr[1P.sbatch-estrP.sbatch-estrI.sbatch-estr[C[C[C[C[C[C[C[C[C[C[C[Cellla[K[K[Klagonzalez.sh 
+[?2004l#!/bin/sh
+
+#SBATCH -J "MNXB11 Pi homework"
+#SBATCH --time=00:09:00
+#SBATCH -A hep2023-1-6
+#SBATCH --mem=27G 
+#SBATCH -o calculatePI-%j.out
+
+# Launch the calculatePI.sh application script using the container script
+run_in_container_calculatePI.sh
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ 
+[?2004lkstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ CAT[K[K[Kcat ./run_in_container_calculatePI.sh
+[?2004l#!/bin/sh
+# This script runs the calculatePI.sh script using the container `mnxb11_al9.latest.sif` with minimum required parameters
+# -B mounts the project directory inside the container so that is visible also inside the container
+apptainer run -B /projects:/projects /projects/hep/fs11/share/mnxb11/containers/mnxb11_al9.latest.sif ./calculatePI_setup.sh
+
+
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ cat calculatepi.sbatch-estrellagonzalez.sh 
+[?2004l#!/bin/sh
+
+#SBATCH -J "MNXB11 Pi homework"
+#SBATCH --time=00:09:00
+#SBATCH -A hep2023-1-6
+#SBATCH --mem=27G 
+#SBATCH -o calculatePI-%j.out
+
+# Launch the calculatePI.sh application script using the container script
+run_in_container_calculatePI.sh
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ sbatch calculatepi.sbatch-estrellagonzalez.sh 
+[?2004lSubmitted batch job 3684588
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ squeue -u[K[K[K
+[?2004l             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3667330   gpua100     sv17 sh4525li PD       0:00      1 (AssocGrpGRES)
+           3673694   gpua100     sv16 sh4525li PD       0:00      1 (AssocGrpGRES)
+           3680574   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680575   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680576   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680577   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680578   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680579   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680580   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680581   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680582   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680583   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+           3680584   gpua100   md_gpu mmilosev PD       0:00      1 (AssocGrpGRES)
+     3680654_[0-4]   gpua100 prod_apo  gvantsa PD       0:00      1 (Priority)
+     3680653_[0-4]   gpua100 prod_apo  gvantsa PD       0:00      1 (Resources)
+     3680656_[0-4]   gpua100 prod_apo  gvantsa PD       0:00      1 (Priority)
+     3680655_[0-4]   gpua100 prod_apo  gvantsa PD       0:00      1 (Priority)
+           3682434   gpua100 lhpc_jup   emma_b PD       0:00      1 (Priority)
+           3645563   gpua100 v69-p1-r nimamohs PD       0:00      1 (AssocGrpGRES)
+           3645562   gpua100 v69-p1-r nimamohs PD       0:00      1 (AssocGrpGRES)
+           3682466   gpua100 interact      nnh PD       0:00      1 (Priority)
+           3647888   gpua100   sv16_1 sh4525li  R 1-22:43:23      1 cg08
+           3673422   gpua100 Malte_Vo mkoushik  R   20:28:48      1 cg10
+           3682037   gpua100 lhpc_jup   emma_b  R    4:51:59      1 cg12
+           3680573   gpua100   md_gpu mmilosev  R   20:04:48      1 cg09
+           3590190   gpua100 interact      nnh  R 6-14:43:09      1 cg07
+           3645561   gpua100 v69-p0-r nimamohs  R 1-05:59:30      1 cg11
+           3682385  gpua100i L1G_to_L   geopou PD       0:00      1 (Priority)
+           3682384  gpua100i L1G_to_L   geopou PD       0:00      1 (Priority)
+           3682382  gpua100i L1G_to_L   geopou PD       0:00      1 (Resources)
+           3682386  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682387  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682390  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682389  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682388  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682399  gpua100i L2A_to_L   geopou PD       0:00      1 (Priority)
+           3682398  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682397  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682396  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682391  gpua100i L1H_to_L   geopou PD       0:00      1 (Priority)
+           3682403  gpua100i L2A_to_L   geopou PD       0:00      1 (Priority)
+           3682402  gpua100i L2A_to_L   geopou PD       0:00      1 (Priority)
+           3682401  gpua100i L2A_to_L   geopou PD       0:00      1 (Priority)
+           3682400  gpua100i L2A_to_L   geopou PD       0:00      1 (Priority)
+           3682407  gpua100i L2D_to_L   geopou PD       0:00      1 (Priority)
+           3682406  gpua100i L2D_to_L   geopou PD       0:00      1 (Priority)
+           3682405  gpua100i L2D_to_L   geopou PD       0:00      1 (Priority)
+           3682404  gpua100i L2A_to_L   geopou PD       0:00      1 (Priority)
+           3681934  gpua100i   P_PACE   erkull  R    5:54:36      1 cg20
+           3682301  gpua100i   sv14_9 sh4525li  R    2:01:26      1 cg19
+           3682300  gpua100i   sv14_8 sh4525li  R    2:44:33      1 cg21
+           3682230  gpua100i   sv16_2 sh4525li  R    2:58:45      1 cg21
+           3682467  gpua100i interact      nnh  R    1:22:50      1 cg20
+           3684363    gpua40 cross_va vleroy00  R       5:01      1 cg04
+           3684128    gpua40 cross_va vleroy00  R       9:26      1 cg03
+           3682523    gpua40 lhpc_jup  donglin  R      39:17      1 cg01
+           3682244    gpua40 lhpc_/sw    gaya3  R    2:56:00      1 cg01
+           3681501   gpua40i lhpc_aba   annieb  R    7:55:02      1 cg13
+           3684588       hep MNXB11 P  staar20  R       0:48      1 cx09
+           3680012       hep   Scan_1  hanxiao  R 1-00:45:20      1 cx08
+           3680013       hep   Scan_2  hanxiao  R 1-00:45:20      1 cx06
+           3680017       hep   Scan_6  hanxiao  R 1-00:45:20      1 cx11
+        3674997_87      lu48 vq_worke   krival CG       0:00      1 cn159
+        3674997_86      lu48 vq_worke   krival CG       0:00      1 cn159
+        3674997_84      lu48 vq_worke   krival CG       0:00      1 cn159
+        3674997_83      lu48 vq_worke   krival CG       0:00      1 cn159
+        3674997_82      lu48 vq_worke   krival CG       0:00      1 cn159
+        3674997_79      lu48 vq_worke   krival CG       0:00      1 cn159
+           3684328      lu48    guess      mmy PD       0:00      8 (Resources)
+           3684329      lu48 ap_guess      mmy PD       0:00      1 (Dependency)
+           3667840      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3667836      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3667832      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3667827      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3667479      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3667477      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3639383      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3639380      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3639340      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3639337      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3639291      lu48 guess_ap ad3021gu PD       0:00      1 (DependencyNeverSatisfied)
+           3682031      lu48 ir_grid_  eduamgo PD       0:00      1 (Dependency)
+           3682179      lu48      PPA   pampal PD       0:00     12 (Priority)
+           3682180      lu48      PPA   pampal PD       0:00     12 (Priority)
+           3682252      lu48      PPA   pampal PD       0:00      6 (Priority)
+           3684581      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684580      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684579      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684578      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684577      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684576      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684575      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684574      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684573      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684572      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684571      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684570      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684569      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684568      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684567      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684566      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684565      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684564      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684563      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684562      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684561      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684560      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684559      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684558      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684557      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684556      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684555      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684554      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684553      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684552      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684551      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684550      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684549      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684548      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684547      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684546      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684545      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684544      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684543      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684542      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684541      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684540      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684539      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684538      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684537      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684536      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684535      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684534      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684533      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684532      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684531      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684530      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684628      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684627      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684626      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684625      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684624      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684623      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684622      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684621      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684620      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684619      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684618      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684617      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684616      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684615      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684614      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684613      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684612      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684611      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684610      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684609      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684608      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684607      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684606      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684605      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684604      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684603      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684602      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684601      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684600      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684599      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684598      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684597      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684596      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684595      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684594      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684593      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684592      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684591      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684590      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684589      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684587      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684586      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684585      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684584      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684583      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3684582      lu48 nf-WORKF madkabir PD       0:00      1 (Priority)
+           3682557      lu48 phase1_s madkabir PD       0:00      1 (Dependency)
+           3684330      lu48      sim     amey PD       0:00      1 (Priority)
+           3682204      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682224      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682231      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682243      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682270      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682286      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682383      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682482      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682490      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682493      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682497      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682509      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682512      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3682514      lu48      orc maryam42 PD       0:00      1 (Priority)
+           3684529      lu48       qp  dbaykiz PD       0:00      1 (Priority)
+           3681905      lu48  p53_PXP   agnber PD       0:00      4 (AssocGrpCpuLimit)
+           3681906      lu48  p53_PXP   agnber PD       0:00      4 (AssocGrpCpuLimit)
+           3681907      lu48  p53_PXP   agnber PD       0:00      4 (AssocGrpCpuLimit)
+           3681908      lu48  p53_PXP   agnber PD       0:00      4 (AssocGrpCpuLimit)
+           3681909      lu48  p53_PXP   agnber PD       0:00      4 (AssocGrpCpuLimit)
+           3682486      lu48 Au13_rel  nseom19 PD       0:00      1 (Priority)
+           3682161      lu48 Run10_Fx fjnation PD       0:00      1 (Priority)
+           3682181      lu48 Run36_Fx fjnation PD       0:00      1 (Priority)
+           3682200      lu48 Run17_Fx fjnation PD       0:00      1 (Priority)
+           3639624      lu48 PEPPpoly    hesam PD       0:00      2 (Dependency)
+           3639622      lu48 PEPPpoly    hesam PD       0:00      2 (Dependency)
+           3639620      lu48 PEPPAl_n    hesam PD       0:00      2 (Dependency)
+           3639617      lu48 PEPPAl_n    hesam PD       0:00      2 (Dependency)
+           3639614      lu48 PEPPAl_a    hesam PD       0:00      2 (Dependency)
+           3635616      lu48 PEPPpoly chebelch PD       0:00      2 (Dependency)
+           3635240      lu48 PEpolyAl chebelch PD       0:00      2 (Dependency)
+           3635161      lu48 PEpolyAl chebelch PD       0:00      2 (Dependency)
+           3634558      lu48 PEPP_noP chebelch PD       0:00      2 (Dependency)
+           3634495      lu48 PEPP_all chebelch PD       0:00      2 (Dependency)
+           3634126      lu48 PolyAlal chebelch PD       0:00      2 (Dependency)
+           3633995      lu48 PPallHH_ chebelch PD       0:00      2 (Dependency)
+           3633841      lu48 PEallHH_ chebelch PD       0:00      2 (Dependency)
+           3682426      lu48 Pdiol_PT   xuchen PD       0:00      1 (Priority)
+           3682427      lu48 Pdiol_PT   xuchen PD       0:00      1 (Priority)
+           3682428      lu48 X_PT_loc   xuchen PD       0:00      1 (Priority)
+           3682429      lu48 X_PT_loc   xuchen PD       0:00      1 (Priority)
+           3682425      lu48 Elim_P02   xuchen PD       0:00      1 (Priority)
+           3667494      lu48 c7_aggre nimamohs PD       0:00      1 (DependencyNeverSatisfied)
+           3683529      lu48 nf-WORKF madkabir PD       0:00      1 (InvalidQOS)
+           3683528      lu48 nf-WORKF madkabir PD       0:00      1 (InvalidQOS)
+           3683827      lu48 lhpc_rst   guschr  R      15:21      1 cn102
+           3682507      lu48 trajecto ph0245st  R    1:09:13      1 cn117
+           3682330      lu48 _interac  aegorov  R    2:28:16      1 cn180
+           3683867      lu48 gate_abl  xiaohua  R      14:55      1 cn008
+         3682030_0      lu48  ir_grid  eduamgo  R    4:55:56      1 cn119
+         3682030_1      lu48  ir_grid  eduamgo  R    4:55:56      1 cn141
+           3683417      lu48 flexpart vishnutm  R      21:13      1 cx02
+           3676489      lu48 job_scal   denzer  R 1-02:50:32      1 cn149
+         3682307_0      lu48  oatevol    jrman  R    2:42:25      1 cn041
+         3682307_1      lu48  oatevol    jrman  R    2:42:25      1 cn041
+         3682307_2      lu48  oatevol    jrman  R    2:42:25      1 cn041
+         3682307_3      lu48  oatevol    jrman  R    2:42:25      1 cn063
+         3682307_4      lu48  oatevol    jrman  R    2:42:25      1 cn063
+           3676123      lu48 dimer_re mmilosev  R 1-11:47:18      1 cn094
+           3676122      lu48 dimer_re mmilosev  R 1-11:47:24      1 cn116
+           3676121      lu48 dimer_re mmilosev  R 1-11:47:32      1 cn086
+           3667363      lu48 TEtrimme  milicad  R 3-21:47:41      1 cn105
+         3645707_6      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn159
+         3645707_7      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn015
+         3645707_8      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn015
+         3645707_9      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn015
+        3645707_10      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn018
+        3645707_11      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn018
+        3645707_12      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn018
+        3645707_13      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn018
+        3645707_14      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn018
+        3645707_15      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn018
+        3645707_16      lu48 dmrg_arr     gaur  R 5-02:49:05      1 cn018
+         3635498_7      lu48 dmrg_arr     gaur  R 6-05:20:55      1 cn159
+         3655791_2      lu48 dmrg_arr     gaur  R 4-06:35:25      1 cn039
+         3671979_1      lu48 dmrg_arr     gaur  R 2-22:57:14      1 cn039
+         3671979_2      lu48 dmrg_arr     gaur  R 2-22:57:14      1 cn039
+         3671979_4      lu48 dmrg_arr     gaur  R 2-22:57:14      1 cn111
+         3671979_6      lu48 dmrg_arr     gaur  R 2-22:57:14      1 cn159
+         3671979_7      lu48 dmrg_arr     gaur  R 2-22:57:14      1 cn159
+         3671979_8      lu48 dmrg_arr     gaur  R 2-22:57:14      1 cn159
+           3682059      lu48   CECOST    matly  R    4:08:32     17 cn[021,035,071,076,079-081,083-084,106-107,109,123,134,151,153,158]
+           3681519      lu48 lhpc_rst madkabir  R    7:51:30      1 cn059
+           3681363      lu48 iqtree-t    jrota  R    8:22:31      1 cn162
+           3681362      lu48 iqtree-t    jrota  R    8:22:35      1 cn138
+           3681361      lu48 iqtree-t    jrota  R    8:22:41      1 cn019
+           3681360      lu48 iqtree-t    jrota  R    8:22:50      1 cn120
+           3681359      lu48 iqtree-t    jrota  R    8:26:37      1 cn011
+           3684194      lu48 ap_guess      mmy  R       1:24      1 cn087
+           3681272      lu48  C3_LUST ra8073ro  R   15:52:57      6 cn[122,124-125,127-129]
+           3672019      lu48     open      per  R 2-22:12:14      1 cn037
+           3667896      lu48  jupyter   ludvig  R 3-06:58:20      1 cn039
+           3679983      lu48   OVG_RT   agertz  R 1-00:16:07     16 cn[042-043,045-054,056,062,101,104]
+           3681357      lu48     ewub      jan  R    8:56:00      1 cn033
+           3681356      lu48     ewub      jan  R    8:56:08      1 cn033
+           3681355      lu48     ewub      jan  R    8:56:17      1 cn033
+           3681354      lu48     ewub      jan  R    8:56:26      1 cn033
+           3681353      lu48     ewub      jan  R    8:56:36      1 cn033
+           3681352      lu48     ewub      jan  R    8:56:45      1 cn033
+           3681351      lu48     ewub      jan  R    8:56:57      1 cn033
+           3681350      lu48     ewub      jan  R    8:57:22      1 cn033
+           3681348      lu48     ewub      jan  R    8:59:14      1 cn033
+           3681338      lu48     tsub      jan  R    9:19:11      1 cn033
+           3681337      lu48     tsub      jan  R    9:19:14      1 cn033
+           3681336      lu48     tsub      jan  R    9:19:17      1 cn033
+           3681335      lu48     tsub      jan  R    9:19:21      1 cn033
+           3681334      lu48     tsub      jan  R    9:19:24      1 cn033
+           3681333      lu48     tsub      jan  R    9:19:31      1 cn033
+           3671328      lu48     ewub      jan  R 3-03:59:44      1 cn033
+           3671327      lu48     ewub      jan  R 3-03:59:52      1 cn033
+           3671326      lu48     ewub      jan  R 3-04:00:02      1 cn033
+           3671325      lu48     ewub      jan  R 3-04:00:10      1 cn033
+           3671322      lu48     ewub      jan  R 3-04:00:32      1 cn033
+           3671321      lu48     ewub      jan  R 3-04:00:44      1 cn033
+           3671319      lu48     ewub      jan  R 3-04:01:16      1 cn033
+           3671300      lu48     tsub      jan  R 3-04:15:50      1 cn033
+           3671299      lu48     tsub      jan  R 3-04:15:59      1 cn033
+           3671297      lu48     tsub      jan  R 3-04:16:19      1 cn004
+           3671296      lu48     tsub      jan  R 3-04:16:27      1 cn004
+           3671295      lu48     tsub      jan  R 3-04:16:36      1 cn004
+           3671294      lu48     tsub      jan  R 3-04:16:48      1 cn004
+           3671280      lu48     ewub      jan  R 3-04:23:10      1 cn004
+           3671278      lu48     ewub      jan  R 3-04:23:19      1 cn004
+           3671277      lu48     ewub      jan  R 3-04:23:27      1 cn004
+           3671275      lu48     ewub      jan  R 3-04:23:38      1 cn112
+           3671273      lu48     ewub      jan  R 3-04:23:48      1 cn112
+           3671272      lu48     ewub      jan  R 3-04:23:57      1 cn112
+           3652030      lu48     tsub      jan  R 4-08:56:31      1 cn135
+           3652005      lu48     tsub      jan  R 4-08:59:56      1 cn135
+           3652004      lu48    ttsub      jan  R 4-09:00:00      1 cn135
+           3652003      lu48    ttsub      jan  R 4-09:00:03      1 cn135
+           3652002      lu48    ttsub      jan  R 4-09:00:06      1 cn135
+           3652001      lu48    ttsub      jan  R 4-09:00:09      1 cn135
+           3652000      lu48    ttsub      jan  R 4-09:00:11      1 cn135
+           3651999      lu48    ttsub      jan  R 4-09:00:14      1 cn135
+           3651997      lu48    ttsub      jan  R 4-09:00:18      1 cn135
+           3651995      lu48    ttsub      jan  R 4-09:00:19      1 cn135
+           3651994      lu48    ttsub      jan  R 4-09:00:23      1 cn135
+           3651993      lu48    ttsub      jan  R 4-09:00:26      1 cn135
+           3651992      lu48     tsub      jan  R 4-09:00:37      1 cn135
+           3651990      lu48    ttsub      jan  R 4-09:00:41      1 cn001
+           3651989      lu48    ttsub      jan  R 4-09:00:44      1 cn001
+           3651987      lu48    ttsub      jan  R 4-09:00:48      1 cn001
+           3651988      lu48    ttsub      jan  R 4-09:00:48      1 cn001
+           3651986      lu48    ttsub      jan  R 4-09:00:51      1 cn001
+           3651985      lu48    ttsub      jan  R 4-09:00:54      1 cn001
+           3651984      lu48    ttsub      jan  R 4-09:00:57      1 cn001
+           3651982      lu48    ttsub      jan  R 4-09:01:00      1 cn001
+           3651981      lu48    ttsub      jan  R 4-09:01:02      1 cn001
+           3651979      lu48    ttsub      jan  R 4-09:01:06      1 cn001
+           3651977      lu48     tsub      jan  R 4-09:01:14      1 cn001
+           3651974      lu48    ttsub      jan  R 4-09:01:20      1 cn001
+           3651973      lu48    ttsub      jan  R 4-09:01:23      1 cn001
+           3651972      lu48    ttsub      jan  R 4-09:01:25      1 cn001
+           3651971      lu48    ttsub      jan  R 4-09:01:26      1 cn001
+           3651970      lu48    ttsub      jan  R 4-09:01:29      1 cn001
+           3651969      lu48    ttsub      jan  R 4-09:01:31      1 cn001
+           3651967      lu48    ttsub      jan  R 4-09:01:34      1 cn001
+           3651966      lu48    ttsub      jan  R 4-09:01:38      1 cn001
+           3651965      lu48    ttsub      jan  R 4-09:01:40      1 cn001
+           3651963      lu48    ttsub      jan  R 4-09:01:44      1 cn001
+           3651961      lu48     tsub      jan  R 4-09:01:52      1 cn001
+           3651960      lu48    ttsub      jan  R 4-09:01:54      1 cn001
+           3651959      lu48    ttsub      jan  R 4-09:01:58      1 cn001
+           3651957      lu48    ttsub      jan  R 4-09:01:59      1 cn001
+           3651958      lu48    ttsub      jan  R 4-09:01:59      1 cn001
+           3651956      lu48    ttsub      jan  R 4-09:02:03      1 cn001
+           3651955      lu48    ttsub      jan  R 4-09:02:05      1 cn001
+           3651954      lu48    ttsub      jan  R 4-09:02:10      1 cn001
+           3651953      lu48    ttsub      jan  R 4-09:02:13      1 cn001
+           3651951      lu48    ttsub      jan  R 4-09:02:16      1 cn001
+           3651950      lu48    ttsub      jan  R 4-09:02:20      1 cn001
+           3651946      lu48     tsub      jan  R 4-09:02:34      1 cn001
+           3651943      lu48    ttsub      jan  R 4-09:02:38      1 cn001
+           3651942      lu48    ttsub      jan  R 4-09:02:41      1 cn001
+           3651941      lu48    ttsub      jan  R 4-09:02:44      1 cn001
+           3651940      lu48    ttsub      jan  R 4-09:02:46      1 cn001
+           3651938      lu48    ttsub      jan  R 4-09:02:49      1 cn001
+           3651934      lu48    ttsub      jan  R 4-09:02:55      1 cn001
+           3651933      lu48    ttsub      jan  R 4-09:02:57      1 cn001
+           3651931      lu48    ttsub      jan  R 4-09:03:03      1 cn001
+           3651930      lu48    ttsub      jan  R 4-09:03:05      1 cn001
+           3651928      lu48    ttsub      jan  R 4-09:03:10      1 cn172
+           3651926      lu48     tsub      jan  R 4-09:03:19      1 cn172
+           3651923      lu48    ttsub      jan  R 4-09:03:23      1 cn172
+           3651922      lu48    ttsub      jan  R 4-09:03:25      1 cn067
+           3651921      lu48    ttsub      jan  R 4-09:03:28      1 cn067
+           3651919      lu48    ttsub      jan  R 4-09:03:31      1 cn067
+           3651918      lu48    ttsub      jan  R 4-09:03:33      1 cn067
+           3651917      lu48    ttsub      jan  R 4-09:03:36      1 cn067
+           3651916      lu48    ttsub      jan  R 4-09:03:39      1 cn067
+           3651915      lu48    ttsub      jan  R 4-09:03:42      1 cn067
+           3651914      lu48    ttsub      jan  R 4-09:03:45      1 cn067
+           3651913      lu48    ttsub      jan  R 4-09:03:49      1 cn067
+           3651911      lu48     tsub      jan  R 4-09:03:58      1 cn067
+           3651910      lu48    ttsub      jan  R 4-09:04:05      1 cn067
+           3651909      lu48    ttsub      jan  R 4-09:04:09      1 cn067
+           3651908      lu48    ttsub      jan  R 4-09:04:12      1 cn067
+           3651907      lu48    ttsub      jan  R 4-09:04:15      1 cn067
+           3651905      lu48    ttsub      jan  R 4-09:04:18      1 cn067
+           3651904      lu48    ttsub      jan  R 4-09:04:20      1 cn067
+           3651902      lu48    ttsub      jan  R 4-09:04:23      1 cn067
+           3651901      lu48    ttsub      jan  R 4-09:04:26      1 cn067
+           3651900      lu48    ttsub      jan  R 4-09:04:29      1 cn067
+           3651899      lu48    ttsub      jan  R 4-09:04:34      1 cn067
+           3651898      lu48     tsub      jan  R 4-09:04:47      1 cn067
+           3651897      lu48    ttsub      jan  R 4-09:04:51      1 cn067
+           3651896      lu48    ttsub      jan  R 4-09:04:54      1 cn067
+           3651895      lu48    ttsub      jan  R 4-09:04:57      1 cn067
+           3651894      lu48    ttsub      jan  R 4-09:05:00      1 cn067
+           3651893      lu48    ttsub      jan  R 4-09:05:03      1 cn067
+           3651890      lu48    ttsub      jan  R 4-09:05:09      1 cn067
+           3651888      lu48    ttsub      jan  R 4-09:05:12      1 cn067
+           3651887      lu48    ttsub      jan  R 4-09:05:15      1 cn067
+           3651886      lu48    ttsub      jan  R 4-09:05:20      1 cn067
+           3651885      lu48     tsub      jan  R 4-09:05:33      1 cn067
+           3651884      lu48    ttsub      jan  R 4-09:05:36      1 cn067
+           3651883      lu48    ttsub      jan  R 4-09:05:39      1 cn067
+           3651882      lu48    ttsub      jan  R 4-09:05:41      1 cn067
+           3651881      lu48    ttsub      jan  R 4-09:05:45      1 cn067
+           3651880      lu48    ttsub      jan  R 4-09:05:48      1 cn067
+           3651878      lu48    ttsub      jan  R 4-09:06:06      1 cn067
+           3651877      lu48    ttsub      jan  R 4-09:06:10      1 cn067
+           3651876      lu48    ttsub      jan  R 4-09:06:13      1 cn067
+           3651875      lu48    ttsub      jan  R 4-09:06:19      1 cn067
+           3682475      lu48 lammps_s   sahire  R    1:33:29      1 cn100
+           3673452      lu48 ALBM_run   jiahui  R 2-06:57:00      1 cn111
+           3673453      lu48 iqtree-m   nikwah  R 2-06:55:05      1 cn044
+           3682556      lu48 fishnet_ madkabir  R      28:00      1 cn087
+           3682525      lu48 lhpc_rst madkabir  R      37:58      1 cn132
+           3680598      lu48      599   agertz  R   21:51:53     10 cn[023,026,064,077-078,082,085,097,156],cx01
+           3652055      lu48 tripleCE   dylanh  R 4-08:50:51      8 cn[165,169-171,173,175-176,178]
+           3676227      lu48 ALBM_run   jiahui  R 1-04:21:27      1 cn179
+           3676226      lu48 ALBM_run   jiahui  R 1-04:22:46      1 cn135
+           3676229      lu48 ALBM_run   jiahui  R 1-04:12:42      1 cn018
+           3680649      lu48 ALBM_run   jiahui  R   20:54:54      1 cn102
+           3681536      lu48 ALBM_run   jiahui  R    7:48:20      1 cn006
+           3681936      lu48 ALBM_run   jiahui  R    5:51:58      1 cn041
+           3681517      lu48 ALBM_run   jiahui  R    7:52:31      1 cn102
+           3681022      lu48 step_16. kanaliko  R   17:03:11      1 cn005
+           3681023      lu48 step_08. kanaliko  R   17:03:11      1 cn005
+           3681024      lu48 step_12. kanaliko  R   17:03:11      1 cn005
+           3681025      lu48 step_29. kanaliko  R   17:03:11      1 cn005
+           3681026      lu48 step_47. kanaliko  R   17:03:11      1 cn005
+           3681027      lu48 step_03. kanaliko  R   17:03:11      1 cn005
+           3681028      lu48 step_39. kanaliko  R   17:03:11      1 cn005
+           3681029      lu48 step_37. kanaliko  R   17:03:11      1 cn005
+           3681030      lu48 step_18. kanaliko  R   17:03:11      1 cn005
+           3681031      lu48 step_54. kanaliko  R   17:03:11      1 cn005
+           3681032      lu48 step_02. kanaliko  R   17:03:11      1 cn005
+           3681033      lu48 step_42. kanaliko  R   17:03:11      1 cn005
+           3681034      lu48 step_68. kanaliko  R   17:03:11      1 cn005
+           3681035      lu48 step_65. kanaliko  R   17:03:11      1 cn005
+           3681036      lu48 step_43. kanaliko  R   17:03:11      1 cn005
+           3681037      lu48 step_04. kanaliko  R   17:03:11      1 cn005
+           3681000      lu48 step_05. kanaliko  R   17:03:13      1 cn005
+           3681001      lu48 step_44. kanaliko  R   17:03:13      1 cn005
+           3681002      lu48 step_09. kanaliko  R   17:03:13      1 cn005
+           3681003      lu48 step_22. kanaliko  R   17:03:13      1 cn005
+           3681004      lu48 step_14. kanaliko  R   17:03:13      1 cn005
+           3681005      lu48 step_32. kanaliko  R   17:03:13      1 cn005
+           3681006      lu48 step_56. kanaliko  R   17:03:13      1 cn005
+           3681007      lu48 step_63. kanaliko  R   17:03:13      1 cn005
+           3681008      lu48 step_53. kanaliko  R   17:03:13      1 cn005
+           3681009      lu48 step_66. kanaliko  R   17:03:13      1 cn005
+           3681010      lu48 step_21. kanaliko  R   17:03:13      1 cn005
+           3681011      lu48 step_61. kanaliko  R   17:03:13      1 cn005
+           3681012      lu48 step_27. kanaliko  R   17:03:13      1 cn005
+           3681013      lu48 step_30. kanaliko  R   17:03:13      1 cn005
+           3681014      lu48 step_51. kanaliko  R   17:03:13      1 cn005
+           3681015      lu48 step_35. kanaliko  R   17:03:13      1 cn005
+           3681016      lu48 step_24. kanaliko  R   17:03:13      1 cn005
+           3681017      lu48 step_45. kanaliko  R   17:03:13      1 cn005
+           3681018      lu48 step_60. kanaliko  R   17:03:13      1 cn005
+           3681019      lu48 step_67. kanaliko  R   17:03:13      1 cn005
+           3681020      lu48 step_40. kanaliko  R   17:03:13      1 cn005
+           3681021      lu48 step_50. kanaliko  R   17:03:13      1 cn005
+           3680958      lu48 step_03. kanaliko  R   17:03:57      1 cn181
+           3680959      lu48 step_39. kanaliko  R   17:03:57      1 cn181
+           3680960      lu48 step_37. kanaliko  R   17:03:57      1 cn181
+           3680961      lu48 step_18. kanaliko  R   17:03:57      1 cn181
+           3680962      lu48 step_54. kanaliko  R   17:03:57      1 cn181
+           3680963      lu48 step_02. kanaliko  R   17:03:57      1 cn181
+           3680964      lu48 step_42. kanaliko  R   17:03:57      1 cn181
+           3680965      lu48 step_68. kanaliko  R   17:03:57      1 cn181
+           3680966      lu48 step_65. kanaliko  R   17:03:57      1 cn181
+           3680967      lu48 step_43. kanaliko  R   17:03:57      1 cn181
+           3680968      lu48 step_04. kanaliko  R   17:03:57      1 cn181
+           3680969      lu48 step_69. kanaliko  R   17:03:57      1 cn181
+           3680970      lu48 step_17. kanaliko  R   17:03:57      1 cn181
+           3680971      lu48 step_57. kanaliko  R   17:03:57      1 cn181
+           3680990      lu48 step_13. kanaliko  R   17:03:57      1 cn005
+           3680991      lu48 step_38. kanaliko  R   17:03:57      1 cn005
+           3680992      lu48 step_59. kanaliko  R   17:03:57      1 cn005
+           3680993      lu48 step_41. kanaliko  R   17:03:57      1 cn005
+           3680994      lu48 step_62. kanaliko  R   17:03:57      1 cn005
+           3680995      lu48 step_48. kanaliko  R   17:03:57      1 cn005
+           3680996      lu48 step_01. kanaliko  R   17:03:57      1 cn005
+           3680997      lu48 step_10. kanaliko  R   17:03:57      1 cn005
+           3680998      lu48 step_06. kanaliko  R   17:03:57      1 cn005
+           3680999      lu48 step_33. kanaliko  R   17:03:57      1 cn005
+           3680931      lu48 step_05. kanaliko  R   17:03:59      1 cn181
+           3680932      lu48 step_44. kanaliko  R   17:03:59      1 cn181
+           3680933      lu48 step_09. kanaliko  R   17:03:59      1 cn181
+           3680934      lu48 step_22. kanaliko  R   17:03:59      1 cn181
+           3680935      lu48 step_14. kanaliko  R   17:03:59      1 cn181
+           3680936      lu48 step_32. kanaliko  R   17:03:59      1 cn181
+           3680937      lu48 step_56. kanaliko  R   17:03:59      1 cn181
+           3680938      lu48 step_63. kanaliko  R   17:03:59      1 cn181
+           3680939      lu48 step_53. kanaliko  R   17:03:59      1 cn181
+           3680940      lu48 step_66. kanaliko  R   17:03:59      1 cn181
+           3680941      lu48 step_21. kanaliko  R   17:03:59      1 cn181
+           3680942      lu48 step_61. kanaliko  R   17:03:59      1 cn181
+           3680943      lu48 step_27. kanaliko  R   17:03:59      1 cn181
+           3680944      lu48 step_30. kanaliko  R   17:03:59      1 cn181
+           3680945      lu48 step_51. kanaliko  R   17:03:59      1 cn181
+           3680946      lu48 step_35. kanaliko  R   17:03:59      1 cn181
+           3680947      lu48 step_24. kanaliko  R   17:03:59      1 cn181
+           3680948      lu48 step_45. kanaliko  R   17:03:59      1 cn181
+           3680949      lu48 step_60. kanaliko  R   17:03:59      1 cn181
+           3680950      lu48 step_67. kanaliko  R   17:03:59      1 cn181
+           3680951      lu48 step_40. kanaliko  R   17:03:59      1 cn181
+           3680952      lu48 step_50. kanaliko  R   17:03:59      1 cn181
+           3680953      lu48 step_16. kanaliko  R   17:03:59      1 cn181
+           3680954      lu48 step_08. kanaliko  R   17:03:59      1 cn181
+           3680955      lu48 step_12. kanaliko  R   17:03:59      1 cn181
+           3680956      lu48 step_29. kanaliko  R   17:03:59      1 cn181
+           3680957      lu48 step_47. kanaliko  R   17:03:59      1 cn181
+           3640760      lu48    isd61    dwang  R 5-18:00:02      1 cn131
+           3639613      lu48 PEPPAl_a    hesam  R 5-08:16:43      2 cn[118,133]
+           3639616      lu48 PEPPAl_n    hesam  R 5-08:16:43      2 cn[003,007]
+           3639619      lu48 PEPPAl_n    hesam  R 5-08:16:43      2 cn[090-091]
+           3639621      lu48 PEPPpoly    hesam  R 5-08:16:43      2 cn[012,014]
+           3639623      lu48 PEPPpoly    hesam  R 5-08:16:43      2 cn[098,103]
+           3682444      lu48 submit_0  victorp  R    1:53:32      1 cn009
+           3681859      lu48 complex.   rafgro  R    7:26:08      1 cn009
+           3681862      lu48 complex.   rafgro  R    7:26:08      1 cn009
+           3681865      lu48 complex.   rafgro  R    7:26:08      1 cn009
+           3681871      lu48 complex.   rafgro  R    7:26:08      1 cn009
+           3681874      lu48 complex.   rafgro  R    7:26:08      1 cn009
+           3681883      lu48 complex.   rafgro  R    7:26:08      1 cn009
+           3681889      lu48 complex.   rafgro  R    7:26:08      1 cn010
+           3681891      lu48 sugar.sb   rafgro  R    7:26:08      1 cn010
+           3681892      lu48 complex.   rafgro  R    7:26:08      1 cn010
+           3681895      lu48 complex.   rafgro  R    7:26:08      1 cn010
+           3681829      lu48 complex.   rafgro  R    7:26:11      1 cn063
+           3681834      lu48 sugar.sb   rafgro  R    7:26:11      1 cn181
+           3681847      lu48 complex.   rafgro  R    7:26:11      1 cn006
+           3681853      lu48 complex.   rafgro  R    7:26:11      1 cn009
+           3681856      lu48 complex.   rafgro  R    7:26:11      1 cn009
+           3681811      lu48 complex.   rafgro  R    7:27:21      1 cn006
+           3681814      lu48 complex.   rafgro  R    7:27:21      1 cn006
+           3681817      lu48 complex.   rafgro  R    7:27:21      1 cn006
+           3681819      lu48 sugar.sb   rafgro  R    7:27:21      1 cn006
+           3681820      lu48 complex.   rafgro  R    7:27:21      1 cn006
+           3681760      lu48 complex.   rafgro  R    7:27:22      1 cn060
+           3681762      lu48 sugar.sb   rafgro  R    7:27:22      1 cn060
+           3681771      lu48 sugar.sb   rafgro  R    7:27:22      1 cn060
+           3681772      lu48 complex.   rafgro  R    7:27:22      1 cn060
+           3681775      lu48 complex.   rafgro  R    7:27:22      1 cn060
+           3681778      lu48 complex.   rafgro  R    7:27:22      1 cn060
+           3681781      lu48 complex.   rafgro  R    7:27:22      1 cn061
+           3681787      lu48 complex.   rafgro  R    7:27:22      1 cn061
+           3681790      lu48 complex.   rafgro  R    7:27:22      1 cn001
+           3681793      lu48 complex.   rafgro  R    7:27:22      1 cn002
+           3681795      lu48 sugar.sb   rafgro  R    7:27:22      1 cn002
+           3681796      lu48 complex.   rafgro  R    7:27:22      1 cn002
+           3681801      lu48 sugar.sb   rafgro  R    7:27:22      1 cn004
+           3681804      lu48 sugar.sb   rafgro  R    7:27:22      1 cn004
+           3681808      lu48 complex.   rafgro  R    7:27:22      1 cn004
+           3681702      lu48 sugar.sb   rafgro  R    7:27:24      1 cn087
+           3681703      lu48 complex.   rafgro  R    7:27:24      1 cn087
+           3681706      lu48 complex.   rafgro  R    7:27:24      1 cn087
+           3681708      lu48 sugar.sb   rafgro  R    7:27:24      1 cn087
+           3681709      lu48 complex.   rafgro  R    7:27:24      1 cn087
+           3681712      lu48 complex.   rafgro  R    7:27:24      1 cn087
+           3681714      lu48 sugar.sb   rafgro  R    7:27:24      1 cn087
+           3681715      lu48 complex.   rafgro  R    7:27:24      1 cn015
+           3681724      lu48 complex.   rafgro  R    7:27:24      1 cn063
+           3681730      lu48 complex.   rafgro  R    7:27:24      1 cn063
+           3681733      lu48 complex.   rafgro  R    7:27:24      1 cn063
+           3681736      lu48 complex.   rafgro  R    7:27:24      1 cn063
+           3681742      lu48 complex.   rafgro  R    7:27:24      1 cn063
+           3681747      lu48 sugar.sb   rafgro  R    7:27:24      1 cn063
+           3681748      lu48 complex.   rafgro  R    7:27:24      1 cn063
+           3681662      lu48 sugar.sb   rafgro  R    7:27:26      1 cn013
+           3681663      lu48 complex.   rafgro  R    7:27:26      1 cn181
+           3681665      lu48 sugar.sb   rafgro  R    7:27:26      1 cn181
+           3681666      lu48 complex.   rafgro  R    7:27:26      1 cn181
+           3681681      lu48 complex.   rafgro  R    7:27:26      1 cn087
+           3681687      lu48 complex.   rafgro  R    7:27:26      1 cn087
+           3681696      lu48 complex.   rafgro  R    7:27:26      1 cn087
+           3681647      lu48 sugar.sb   rafgro  R    7:27:27      1 cn013
+           3681648      lu48 complex.   rafgro  R    7:27:27      1 cn013
+           3681651      lu48 complex.   rafgro  R    7:27:27      1 cn013
+           3681653      lu48 sugar.sb   rafgro  R    7:27:27      1 cn013
+           3681654      lu48 complex.   rafgro  R    7:27:27      1 cn013
+           3681657      lu48 complex.   rafgro  R    7:27:27      1 cn013
+           3635239      lu48 PEpolyAl chebelch  R 5-13:45:26      2 cn[142,144]
+           3635615      lu48 PEPPpoly chebelch  R 5-13:45:26      2 cn[145,147]
+           3634557      lu48 PEPP_noP chebelch  R 5-15:09:31      2 cn[161,164]
+           3634494      lu48 PEPP_all chebelch  R 5-15:17:32      2 cn[058,073]
+           3645907      lu48       qo   ellenn  R 4-16:23:10      1 cn061
+           3645903      lu48       qo   ellenn  R 4-16:26:55      1 cn126
+           3645906      lu48       qo   ellenn  R 4-16:26:55      1 cn126
+           3635160      lu48 PEpolyAl chebelch  R 5-15:07:31      2 cn[072,155]
+           3639717      lu48       qo   ellenn  R 5-17:41:58      1 cn172
+           3676671      lu48      orc maryam42  R   20:46:12      1 cn284
+           3645421      lu48 BNIVnkua  nseom19  R 4-14:38:28      1 cn114
+           3645419      lu48  BNIVhed  nseom19  R 4-14:45:00      1 cn022
+           3679678      lu48      orc maryam42  R   20:44:02      1 cn108
+           3667422      lu48 256_256_    dwang  R 3-20:46:53      1 cn024
+           3682182      lu48      orc maryam42  R    3:08:18      1 cn113
+           3682162      lu48      orc maryam42  R    3:10:54      1 cn140
+           3682437      lu48       qp  dbaykiz  R    2:05:33      1 cn063
+           3682443      lu48       qp  dbaykiz  R    1:55:32      1 cn074
+           3682091      lu48       qp  dbaykiz  R    3:44:44      1 cn137
+           3680756      lu48     2std     erna  R   18:56:55      1 cn137
+           3680715      lu48    5a-5b     erna  R   19:24:18      1 cn172
+           3680714      lu48    5a-5b     erna  R   19:26:52      1 cn061
+           3645901      lu48       qo   ellenn  R 5-00:46:57      1 cn152
+           3645899      lu48       qo   ellenn  R 5-00:48:57      1 cn015
+           3645898      lu48       qo   ellenn  R 5-00:50:57      1 cn137
+           3684229      lu48       qp  dbaykiz  R       7:24      1 cn150
+           3684127      lu48       qp  dbaykiz  R       9:25      1 cn074
+           3684026      lu48       qp  dbaykiz  R      11:25      1 cn150
+           3682513      lu48       qp  dbaykiz  R    1:01:29      1 cn150
+         3682324_7      lu48 scan_ite  shouran  R       3:25      1 cn036
+         3682324_5      lu48 scan_ite  shouran  R      23:27      1 cn115
+         3682324_6      lu48 scan_ite  shouran  R      23:27      1 cn177
+           3680604      lu48 SMHARD_s si2185li  R   21:39:47      1 cn039
+           3680605      lu48 SMHARD_s si2185li  R   21:39:47      1 cn039
+           3680606      lu48 SMHARD_s si2185li  R   21:39:47      1 cn039
+           3680607      lu48 SMHARD_s si2185li  R   21:39:47      1 cn111
+           3680608      lu48 SMHARD_s si2185li  R   21:39:47      1 cn111
+           3680609      lu48 SMHARD_s si2185li  R   21:39:47      1 cn111
+           3680610      lu48 SMHARD_s si2185li  R   21:39:47      1 cn111
+           3680611      lu48 SMHARD_s si2185li  R   21:39:47      1 cn111
+           3680628      lu48 SHARP_sm si2185li  R   21:39:47      1 cn121
+           3680629      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680630      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680631      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680632      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680633      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680634      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680635      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680636      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680637      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680638      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680639      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680640      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680641      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680642      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680643      lu48 SHARP_sm si2185li  R   21:39:47      1 cn135
+           3680522      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn074
+           3680523      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn074
+           3680524      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn105
+           3680525      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn105
+           3680526      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn105
+           3680527      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn112
+           3680528      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn152
+           3680529      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn152
+           3680530      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680531      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680532      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680533      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680534      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680535      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680536      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680537      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680538      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680539      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680540      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn039
+           3680541      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn067
+           3680542      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn067
+           3680543      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn067
+           3680544      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn067
+           3680545      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn067
+           3680546      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn067
+           3680547      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn111
+           3680548      lu48 BRUSH_ra si2185li  R   22:45:50      1 cn111
+           3683684      lu48 BODYanal si2185li  R      17:27      1 cn010
+           3682529      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682530      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682531      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682532      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682533      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682534      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682535      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682536      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682537      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682538      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682539      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682540      lu48 STICKYHA si2185li  R      31:28      1 cn010
+           3682541      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682542      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682543      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682544      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682545      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682546      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682547      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682548      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682549      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682550      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682551      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3682552      lu48 WCAHARD_ si2185li  R      31:28      1 cn010
+           3618727      lu48 rdkd10b_ si2185li  R 6-19:54:03      1 cn174
+           3618728      lu48 rdkd10b_ si2185li  R 6-19:54:03      1 cn174
+           3618729      lu48 rdkd10b_ si2185li  R 6-19:54:03      1 cn152
+           3675665      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675666      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675667      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675668      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675669      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675670      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675671      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675672      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675673      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675674      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675675      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675676      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn010
+           3675677      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn025
+           3675678      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn025
+           3675679      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn025
+           3675680      lu48 MATCH_ra si2185li  R 1-14:08:29      1 cn025
+           3676201      lu48   m311_8    dwang  R 1-06:45:58      1 cn004
+           3676200      lu48   m310_8    dwang  R 1-06:46:00      1 cn039
+           3676197      lu48   m307_8    dwang  R 1-06:46:01      1 cn160
+           3676198      lu48   m308_8    dwang  R 1-06:46:01      1 cn089
+           3676199      lu48   m309_8    dwang  R 1-06:46:01      1 cn089
+           3676195      lu48   m305_8    dwang  R 1-06:46:04      1 cn074
+           3676196      lu48   m306_8    dwang  R 1-06:46:04      1 cn160
+           3676194      lu48   m304_8    dwang  R 1-06:46:06      1 cn002
+           3671647      lu48 LFF_ela1   annieb  R 3-01:40:22      1 cn040
+           3667953      lu48 LFF_ela2   annieb  R 3-06:38:38      1 cn060
+           3667952      lu48 LFF_ela1   annieb  R 3-06:38:41      1 cn002
+           3671665      lu48 hzo_aimd  nseom19  R 2-23:59:17      1 cn057
+           3671664      lu48 hzo_aimd  nseom19  R 3-00:01:36      1 cn130
+           3671663      lu48 hzo_aimd  nseom19  R 3-00:05:28      1 cn055
+           3681904      lu48  p53_PPP   agnber  R    4:38:20      4 cn[065,068-070]
+           3633840      lu48 PEallHH_ chebelch  R 6-07:42:19      2 cn[028,032]
+           3634125      lu48 PolyAlal chebelch  R 6-07:09:14      2 cn[016,034]
+           3633994      lu48 PPallHH_ chebelch  R 6-07:27:07      2 cn[066,075]
+           3682053      lu48  p2_wt20   sepjaf  R    4:29:33      1 cn150
+           3682047      lu48  wt10_lw   sepjaf  R    4:41:51      1 cn017
+           3682036      lu48  dk3wt10   sepjaf  R    4:52:05      1 cn112
+           3682011      lu48    dk3p2   sepjaf  R    5:13:00      1 cn179
+           3682501      lu48  wt20_ex   sepjaf  R    1:17:31      1 cn017
+           3672173      lu48 25phard_   rdatta  R 2-16:34:29      1 cn157
+           3672110      lu48 75phard_   rdatta  R 2-18:12:40      1 cn139
+           3671006      lu48 ega_prod   jullid  R 3-05:26:12      1 cn004
+         3681948_0      lu48 hzo_dp_c  nseom19  R    5:27:51      1 cn013
+         3681948_1      lu48 hzo_dp_c  nseom19  R    5:27:51      1 cn013
+         3681948_2      lu48 hzo_dp_c  nseom19  R    5:27:51      1 cn013
+         3681948_3      lu48 hzo_dp_c  nseom19  R    5:27:51      1 cn013
+           3671505      lu48 ethoxide   xuchen  R 2-23:48:18      1 cn095
+           3681903      lu48  p53_PPP   agnber  R    7:08:18      4 cn[088,092,096,099]
+           3681901      lu48  p53_PPP   agnber  R    7:10:21      4 cn[136,143,146,148]
+           3681900      lu48  p53_PPP   agnber  R    7:10:25      4 cn[163,166-168]
+           3681899      lu48  p53_PPP   agnber  R    7:10:30      4 cn[020,027,029-030]
+           3681913      lu48 URANS_3_ jo6812im  R    7:02:39      1 cn031
+           3680645      lu48 X_add_NE   xuchen  R   21:09:59      1 cn093
+           3682142      lu48  Run1_Fx fjnation  R    3:17:05      1 cn154
+           3682106      lu48 Run68_Fx fjnation  R    3:23:22      1 cn182
+           3682105      lu48  Run9_Fx fjnation  R    3:24:06      1 cn038
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ squeuebatch calculatepi.sbatch-estrellagonzalez.sh [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pcat calculatepi.sbatch-estrellagonzalez.sh 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6P./run_in_container_calculatePI.sh[K[staar20@cosmos-pkf scripts]$ cat ./run_in_container_calculatePI.shcalculatepi.sbatch-estrellagonzalez.sh [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csbatch calculatepi.sbatch-estrellagonzalez.sh [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cqueue[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ksinfo
+[?2004lPARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+nuc          up 7-00:00:00      1 drain* nuc80
+nuc          up 7-00:00:00     95   idle nuc[01-79,81-96]
+lu48*        up 7-00:00:00      1   plnd cn110
+lu48*        up 7-00:00:00      1   comp cn159
+lu48*        up 7-00:00:00      1   resv cx03
+lu48*        up 7-00:00:00     30    mix cn[001-002,004,006,008-010,013,018,025,031,033,037,039-041,060-061,067,074,087,102,105,111-112,117,121,152,174,181]
+lu48*        up 7-00:00:00    153  alloc cn[003,005,007,011-012,014-017,019-024,026-030,032,034-036,038,042-059,062-066,068-073,075-086,088-101,103-104,106-109,113-116,118-120,122-151,153-158,160-173,175-180,182,284],cx[01-02]
+hep          up 5-00:00:00      1    mix cx09
+hep          up 5-00:00:00      3  alloc cx[06,08,11]
+hep          up 5-00:00:00      8   idle cx[04-05,07,10,12-15]
+gpua40       up 1-00:00:00      3    mix cg[01,03-04]
+gpua40       up 1-00:00:00      3   idle cg[02,05-06]
+hpua40       up 1-00:00:00      3    mix cg[01,03-04]
+hpua40       up 1-00:00:00      3   idle cg[02,05-06]
+gpua40i      up 2-00:00:00      1    mix cg13
+gpua40i      up 2-00:00:00      5   idle cg[14-17,23]
+hpua40i      up 2-00:00:00      1    mix cg13
+hpua40i      up 2-00:00:00      5   idle cg[14-17,23]
+gpua100      up 7-00:00:00      6  alloc cg[07-12]
+gpua100i     up 7-00:00:00      3    mix cg[19-21]
+gpua100i     up 7-00:00:00      1   idle cg18
+aurora       up 7-00:00:00     18   resv ca[01-18]
+aurora       up 7-00:00:00      4   idle ca[19-22]
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ sinfoqueuebatch calculatepi.sbatch-estrellagonzalez.sh [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pcat calculatepi.sbatch-estrellagonzalez.sh 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6P./run_in_container_calculatePI.shkstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ CAT [K[K[K[Kcat ./run_in_container_calculatePI.sh 
+[?2004l#!/bin/sh
+# This script runs the calculatePI.sh script using the container `mnxb11_al9.latest.sif` with minimum required parameters
+# -B mounts the project directory inside the container so that is visible also inside the container
+apptainer run -B /projects:/projects /projects/hep/fs11/share/mnxb11/containers/mnxb11_al9.latest.sif ./calculatePI_setup.sh
+
+
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ cat calculatepi.sbatch-estrellagonzalez.sh 
+[?2004l#!/bin/sh
+
+#SBATCH -J "MNXB11 Pi homework"
+#SBATCH --time=00:09:00
+#SBATCH -A hep2023-1-6
+#SBATCH --mem=27G 
+#SBATCH -o calculatePI-%j.out
+
+# Launch the calculatePI.sh application script using the container script
+run_in_container_calculatePI.sh
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ sbatch calculatepi.sbatch-estrellagonzalez.sh 
+[?2004lSubmitted batch job 3684830
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ squeue -u staar20
+[?2004l             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3684830       hep MNXB11 P  staar20  R       1:13      1 cx09
+           3684588       hep MNXB11 P  staar20  R       6:13      1 cx09
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ scontrol show job 3684830
+[?2004lJobId=3684830 JobName=MNXB11 Pi homework
+   UserId=staar20(400215) GroupId=staar20(400215) MCS_label=N/A
+   Priority=63467 Nice=0 Account=hep2023-1-6 QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:01:28 TimeLimit=00:09:00 TimeMin=N/A
+   SubmitTime=2026-09-21T16:40:58 EligibleTime=2026-09-21T16:40:58
+   AccrueTime=2026-09-21T16:40:58
+   StartTime=2026-09-21T16:40:59 EndTime=2026-09-21T16:49:59 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-21T16:40:59 Scheduler=Main
+   Partition=hep AllocNode:Sid=cosmos-pkf:557729
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=cx09
+   BatchHost=cx09
+   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=1,mem=27G,node=1,billing=1
+   AllocTRES=cpu=1,mem=27G,node=1,billing=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=27G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/staar20/git/MNXB11-homework/homework3/calculatePI/scripts/calculatepi.sbatch-estrellagonzalez.sh
+   WorkDir=/home/staar20/git/MNXB11-homework/homework3/calculatePI/scripts
+   StdErr=/home/staar20/git/MNXB11-homework/homework3/calculatePI/scripts/calculatePI-3684830.out
+   StdIn=/dev/null
+   StdOut=/home/staar20/git/MNXB11-homework/homework3/calculatePI/scripts/calculatePI-3684830.out
+   Power=
+   
+
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ scontrol show job 3684830[8Pqueue -u staar20batch calculatepi.sbatch-estrellagonzalez.sh [K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Ksbatch WASTED
+[?2004lsbatch: error: Unable to open file WASTED
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ screen -d
+[?2004l[557728.pts-18.cosmos-pkf detached.]
+
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ CAT[K[K[Kcat ./run_in_container_calculatePI.sh 
+[?2004l#!/bin/sh
+# This script runs the calculatePI.sh script using the container `mnxb11_al9.latest.sif` with minimum required parameters
+# -B mounts the project directory inside the container so that is visible also inside the container
+apptainer run -B /projects:/projects /projects/hep/fs11/share/mnxb11/containers/mnxb11_al9.latest.sif ./calculatePI_setup.sh
+
+
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ cat calculatepi.sbatch-estrellagonzalez.sh 
+[?2004l#!/bin/sh
+
+#SBATCH -J "MNXB11 Pi homework"
+#SBATCH --time=00:09:00
+#SBATCH -A hep2023-1-6
+#SBATCH --mem=27G 
+#SBATCH -o calculatePI-%j.out
+
+# Launch the calculatePI.sh application script using the container script
+run_in_container_calculatePI.sh
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ sbatch calculatepi.sbatch-estrellagonzalez.sh 
+[?2004lSubmitted batch job 3685298
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ squeue -u staar20
+[?2004l             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3685298       hep MNXB11 P  staar20  R       0:29      1 cx09
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ scontrol show job 3685298
+[?2004lJobId=3685298 JobName=MNXB11 Pi homework
+   UserId=staar20(400215) GroupId=staar20(400215) MCS_label=N/A
+   Priority=63465 Nice=0 Account=hep2023-1-6 QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:40 TimeLimit=00:09:00 TimeMin=N/A
+   SubmitTime=2026-09-21T17:00:28 EligibleTime=2026-09-21T17:00:28
+   AccrueTime=2026-09-21T17:00:28
+   StartTime=2026-09-21T17:00:29 EndTime=2026-09-21T17:09:29 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-21T17:00:29 Scheduler=Main
+   Partition=hep AllocNode:Sid=cosmos-pkf:592454
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=cx09
+   BatchHost=cx09
+   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=1,mem=27G,node=1,billing=1
+   AllocTRES=cpu=1,mem=27G,node=1,billing=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=27G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/staar20/git/MNXB11-homework/homework3/calculatePI/scripts/calculatepi.sbatch-estrellagonzalez.sh
+   WorkDir=/home/staar20/git/MNXB11-homework/homework3/calculatePI/scripts
+   StdErr=/home/staar20/git/MNXB11-homework/homework3/calculatePI/scripts/calculatePI-3685298.out
+   StdIn=/dev/null
+   StdOut=/home/staar20/git/MNXB11-homework/homework3/calculatePI/scripts/calculatePI-3685298.out
+   Power=
+   
+
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ scontrol show job 3685298[8Pqueue -u staar20batch calculatepi.sbatch-estrellagonzalez.sh [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pcat calculatepi.sbatch-estrellagonzalez.sh 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5P./run_in_container_calculatePI[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcode calculatepi.sbatch-estrellagonzalez.sh  [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K 
+[?2004lkstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ code calculatepi.sbatch-estrellagonzalez.sh  [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[19Pscontrol show job 3685298
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pqueue -u staar20batch calculatepi.sbatch-estrellagonzalez.sh 
+[?2004lSubmitted batch job 3685301
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ sbatch calculatepi.sbatch-estrellagonzalez.sh 
+[?2004lSubmitted batch job 3685302
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ sbatch calculatepi.sbatch-estrellagonzalez.sh 
+[?2004lSubmitted batch job 3685303
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ sbatch calculatepi.sbatch-estrellagonzalez.sh [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccode calculatepi.sbatch-estrellagonzalez.sh  [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[19Pscontrol show job 3685298
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pqueue -u staar20
+[?2004l             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3685303       hep   WASTED  staar20  R       0:05      1 cx09
+           3685302       hep   WASTED  staar20  R       0:07      1 cx09
+           3685301       hep   WASTED  staar20  R       0:08      1 cx09
+           3685298       hep MNXB11 P  staar20  R       1:53      1 cx09
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ scancel 3685303
+[?2004lkstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ scancel 3685303queue -u staar20
+[?2004l             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3685302       hep   WASTED  staar20  R       1:49      1 cx09
+           3685301       hep   WASTED  staar20  R       1:50      1 cx09
+           3685298       hep MNXB11 P  staar20  R       3:35      1 cx09
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ s[Ksqueue -u staar20[2Pcancel 3685303queue -u staar20batch calculatepi.sbatch-estrellagonzalez.sh [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccode calculatepi.sbatch-estrellagonzalez.sh  [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[19Pscontrol show job 3685298
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pqueue -u staar20control show job 3685298[8Pqueue -u staar20control show job 3685298[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kacct -j 3685302
+[?2004lJobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+3685302          WASTED        hep hep2023-1+          1    RUNNING      0:0 
+3685302.bat+      batch            hep2023-1+          1    RUNNING      0:0 
+3685302.ext+     extern            hep2023-1+          1    RUNNING      0:0 
+kstaar20@cosmos-pkf:~/git/MNXB11-homework/homework3/calculatePI/scripts\[?2004h[staar20@cosmos-pkf scripts]$ cat calculatePI-368[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+[?2004lexit
